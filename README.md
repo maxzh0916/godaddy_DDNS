@@ -1,3 +1,4 @@
 # godaddy_DDNS
-通过Godaddy提供的API实现自动更改域名解析
-参考：https://www.xiaoweigod.com/network/1633.html
+基于python3.7
+
+获取本机IP，将本机IP通过Godaddy API更新至DNS记录
