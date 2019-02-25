@@ -10,6 +10,18 @@ headers['Accept'] = 'application/json'
 headers['Content-Type'] = 'application/json'
 headers['Authorization'] = 'sso-key ***********************************:**********************'  # 替换为你的公钥:密钥
 wait_time = 30  # 等待时间
+ftqq_api = "https://sc.ftqq.com/******************************************************.send"  # 替换为你的sever酱SCKEY
+
+
+def wechat_push(ip):
+    title = "【Godaddy_DDNS】本机IP已更换"
+    content = "新IP地址：" + ip
+    data = {
+        "text": title,
+        "desp": content
+    }
+    requests.get(ftqq_api, data)
+    print("已发送微信推送")
 
 
 def get_local_ip():
@@ -60,6 +72,7 @@ if wait_time > 1:
         else:
             print("本机IP与DNS记录不同")
             update_ip(local_ip)
+            wechat_push(local_ip)
         time.sleep(wait_time)
 else:
     print("Godaddy只允许每个API每分钟发送60个请求，等待时间最少大于1秒")
